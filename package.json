@@ -1,9 +1,21 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "micro-mobility-news",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
-  "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "description": "Micro Mobility News Website",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "lint": "eslint . --ignore-path .gitignore",
+    "prettier": "prettier . --ignore-path .gitignore",
+    "check-format": "yarn prettier --list-different",
+    "format": "yarn prettier --write",
+    "validate": "yarn check-format && yarn lint && yarn build",
+    "prepare": "husky install"
+  },
   "dependencies": {
     "gatsby": "^3.14.2",
     "gatsby-plugin-image": "^1.14.1",
@@ -19,26 +31,16 @@
     "react-helmet": "^6.1.0"
   },
   "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-react-app": "^6.0.0",
+    "gatsby-plugin-eslint": "^4.0.0",
+    "husky": ">=6",
+    "lint-staged": ">=10",
     "prettier": "2.4.1"
   },
-  "keywords": [
-    "gatsby"
-  ],
   "license": "0BSD",
-  "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
-    "start": "gatsby develop",
-    "serve": "gatsby serve",
-    "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
-  },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+  "lint-staged": {
+    "*.--write": "prettier --write"
   }
 }
