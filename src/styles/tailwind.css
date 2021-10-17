@@ -16,3 +16,20 @@
     @apply font-body text-base;
   }
 }
+
+.container {
+  @apply max-w-screen-lg mx-auto;
+}
+
+.stacked {
+  @apply relative bg-white border-4 border-black rounded-xl;
+}
+
+.stacked > *:not(::before) {
+  @apply relative;
+}
+
+.stacked::before {
+  content: '';
+  @apply absolute top-4 -left-6 w-full h-full rounded-xl block border-8 border-primary z-0;
+}

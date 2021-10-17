@@ -22,6 +22,9 @@ module.exports = {
         primary: '#0085FF',
         secondary: '#7421FC',
       },
+      maxHeight: {
+        120: '30rem',
+      },
     },
   },
   variants: {
