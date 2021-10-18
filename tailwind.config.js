@@ -23,6 +23,7 @@ module.exports = {
         secondary: '#7421FC',
       },
       height: {
+        '095': '95%',
         224: '56rem',
         248: '62rem',
       },

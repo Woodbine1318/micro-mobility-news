@@ -28,3 +28,12 @@
 .rich-text img {
   @apply w-full mb-8;
 }
+
+.stack {
+  @apply relative;
+}
+
+.stack::before {
+  content: '';
+  @apply absolute top-8 -left-6 border-8 border-primary rounded-3xl w-full h-full;
+}
