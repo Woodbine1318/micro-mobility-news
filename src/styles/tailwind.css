@@ -21,15 +21,10 @@
   @apply max-w-screen-lg mx-auto;
 }
 
-.stacked {
-  @apply relative bg-white border-4 border-black rounded-xl;
+.rich-text p {
+  @apply mb-8;
 }
 
-.stacked > *:not(::before) {
-  @apply relative;
-}
-
-.stacked::before {
-  content: '';
-  @apply absolute top-4 -left-6 w-full h-full rounded-xl block border-8 border-primary z-0;
+.rich-text img {
+  @apply w-full mb-8;
 }

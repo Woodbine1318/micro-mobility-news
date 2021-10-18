@@ -5,7 +5,7 @@ import Bike from '../assets/images/Bike.svg';
 import Scooter from '../assets/images/Scooter.svg';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import BlogPostCard from '../components/BlogPostCard';
 
 const IndexPage = ({ data: { allContentfulBlogPost } }) => {
@@ -25,15 +25,16 @@ const IndexPage = ({ data: { allContentfulBlogPost } }) => {
         <Scooter className="w-32 h-w-32 hidden md:block md:w-40 md:h-40" />
       </header>
 
-      <div className="container px-7 grid grid-cols-1 md:grid-cols-2 md:px-11 md:gap-x-14">
+      <div className="container px-7 grid grid-cols-1 mb-24 md:grid-cols-2 md:px-11 md:gap-x-14">
         <article className="max-w-4xl p-14 border-8 border-black rounded-3xl mb-24 md:mb-8">
-          <GatsbyImage
-            image={featured.cover.gatsbyImageData}
-            alt={featured.cover.title || ''}
-            className="rounded-3xl mb-7 w-full max-h-120"
-          />
-
-          <h2 className="font-extrabold text-lg mb-16">{featured.title}</h2>
+          <Link to={`/news/${featured.slug}`}>
+            <GatsbyImage
+              image={featured.cover.gatsbyImageData}
+              alt={featured.cover.title || ''}
+              className="rounded-3xl mb-7 w-full max-h-120"
+            />
+            <h2 className="font-extrabold text-lg mb-16">{featured.title}</h2>
+          </Link>
           <p className="mb-8">{featured.content.childMarkdownRemark.excerpt}</p>
 
           <p className="w-72 text-center border-4 border-black rounded-xl font-black uppercase py-3">
