@@ -2,14 +2,14 @@ import { Link } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import React from 'react';
 
-const BlogPostCard = ({ post, isEven }) => {
+const BlogPostCard = ({ post, isEven, extended = false }) => {
   return (
-    <article className="flex flex-col flex-nowrap lg:flex-row lg:items-center" key={post.slug}>
+    <article className={`flex flex-col flex-nowrap lg:flex-row ${extended ? '' : 'lg:items-center'}`} key={post.slug}>
       <Link to={`/news/${post.slug}`} className="mb-4 lg:mb-0">
         <GatsbyImage
           image={post.cover.gatsbyImageData}
           alt={post.cover.title || ''}
-          className="w-80 h-56 rounded-2xl mr-12"
+          className={`${extended ? 'w-full h-96 md:w-80 md:h-56' : 'w-80 h-56'} rounded-2xl mr-12`}
         />
       </Link>
 
