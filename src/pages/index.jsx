@@ -28,8 +28,8 @@ const IndexPage = ({ data: { allContentfulBlogPost } }) => {
         <Scooter className="w-32 h-w-32 hidden md:block md:w-40 md:h-40" />
       </header>
 
-      <div className="container px-7 grid grid-cols-1 mb-24 md:grid-cols-2 md:px-11 md:gap-x-14">
-        <Stack className="mb-24 md:mb-8">
+      <div className="container px-7 grid grid-cols-1 items-start mb-24 md:grid-cols-2 md:px-11 md:gap-x-14">
+        <Stack className="mb-24 md:sticky md:top-11 md:left-0 md:mb-8">
           <article className="relative bg-white max-w-4xl p-14 border-8 border-black rounded-3xl">
             <Link to={`/news/${featured.slug}`}>
               <GatsbyImage
@@ -42,9 +42,16 @@ const IndexPage = ({ data: { allContentfulBlogPost } }) => {
 
             <p className="mb-8">{featured.content.childMarkdownRemark.excerpt}</p>
 
-            <p className="w-72 text-center border-4 border-black rounded-xl font-black uppercase py-3">
-              {featured.category.name}
-            </p>
+            <div className="flex flex-row flex-wrap">
+              {featured.categories.map((category) => (
+                <p
+                  className="w-min px-8 text-sm text-center border-4 border-black rounded-xl font-black uppercase py-1 mr-2 last:mr-0"
+                  key={category.id}
+                >
+                  {category.name}
+                </p>
+              ))}
+            </div>
           </article>
         </Stack>
 
@@ -52,8 +59,8 @@ const IndexPage = ({ data: { allContentfulBlogPost } }) => {
           <h1 className="font-black text-2xl uppercase border-b-8 border-black mb-16">Latest</h1>
 
           {latest.map((post, index) => (
-            <div className="flex flex-row flex-nowrap items-center mb-14">
-              <p className="font-black text-2xl mr-12">{index + 1}</p>
+            <div className="flex flex-row flex-nowrap items-start lg:items-center mb-14">
+              <p className="font-black text-2xl mr-12 mt-16 lg:mt-0">{index + 1}</p>
 
               <BlogPostCard post={post} isEven={index % 2 === 0} />
             </div>
@@ -66,13 +73,13 @@ const IndexPage = ({ data: { allContentfulBlogPost } }) => {
 
 export const query = graphql`
   query IndexPageQuery {
-    allContentfulBlogPost(limit: 5, sort: { fields: createdAt, order: ASC }) {
+    allContentfulBlogPost(limit: 5, sort: { fields: createdAt, order: DESC }) {
       edges {
         node {
           id
           slug
           title
-          category {
+          categories {
             id
             slug
             name

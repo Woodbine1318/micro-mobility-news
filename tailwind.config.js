@@ -36,6 +36,7 @@ module.exports = {
     extend: {
       cursor: ['disabled'],
       opacity: ['disabled'],
+      spacing: ['last'],
     },
   },
   plugins: [],

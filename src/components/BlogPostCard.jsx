@@ -4,8 +4,8 @@ import React from 'react';
 
 const BlogPostCard = ({ post, isEven }) => {
   return (
-    <article className="flex flex-nowrap items-center" key={post.slug}>
-      <Link to={`/news/${post.slug}`}>
+    <article className="flex flex-col flex-nowrap lg:flex-row lg:items-center" key={post.slug}>
+      <Link to={`/news/${post.slug}`} className="mb-4 lg:mb-0">
         <GatsbyImage
           image={post.cover.gatsbyImageData}
           alt={post.cover.title || ''}
@@ -14,9 +14,15 @@ const BlogPostCard = ({ post, isEven }) => {
       </Link>
 
       <div className="flex-1">
-        <p className={`font-bold text-sm uppercase ${isEven ? 'text-primary' : 'text-secondary'}`}>
-          #{post.category.name}
-        </p>
+        {[...post.categories, ...post.categories].map((category, i) => (
+          <span
+            className={`font-bold text-sm uppercase ${isEven ? 'text-primary' : 'text-secondary'} mr-2`}
+            key={category.id}
+          >
+            #{category.name}
+          </span>
+        ))}
+
         <h2 className="font-extrabold text-lg leading-tight mb-8">
           <Link to={`/news/${post.slug}`}>{post.title}</Link>
         </h2>
