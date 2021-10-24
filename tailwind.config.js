@@ -30,6 +30,9 @@ module.exports = {
       maxHeight: {
         120: '30rem',
       },
+      flex: {
+        2: '2 1 0',
+      },
     },
   },
   variants: {

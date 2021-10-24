@@ -6,7 +6,7 @@ import Badge from '../assets/images/Badge.svg';
 import BlogPostCard from '../components/BlogPostCard';
 import Pagination from '../components/Pagination.';
 
-const PaginatedBlog = ({ data: { allContentfulBlogPost: posts }, pageContext: { totalPages, pageIndex } }) => {
+const PaginatedBlog = ({ data: { allContentfulBlogPost: posts }, pageContext: { pageIndex } }) => {
   return (
     <Layout>
       <SEO />
@@ -18,10 +18,12 @@ const PaginatedBlog = ({ data: { allContentfulBlogPost: posts }, pageContext: { 
       </header>
 
       <section className="container relative grid grid-cols-1 gap-12 px-8 mb-12 md:grid-cols-2 md:items-start md:mb-24 md:px-24">
-        {posts.edges.map(({ node: post }) => (
-          <BlogPostCard post={post} key={post.id} extended />
+        {posts.edges.map(({ node: post }, index) => (
+          <BlogPostCard post={post} key={post.id} isEven={index % 2 === 0} extended />
         ))}
       </section>
+
+      <Pagination currentPageIndex={pageIndex} />
     </Layout>
   );
 };

@@ -12,8 +12,8 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `);
 
-  const postsOnIndex = 5;
-  const postsPerPage = 10;
+  const postsOnIndex = Number(process.env.GATSBY_POSTS_ON_INDEX || 5);
+  const postsPerPage = Number(process.env.GATSBY_POSTS_PER_PAGE || 10);
   const posts = data?.allContentfulBlogPost?.edges;
   const totalPosts = posts.length - postsOnIndex;
   const totalPages = Math.ceil(totalPosts / postsPerPage);
@@ -42,7 +42,6 @@ exports.createPages = async ({ graphql, actions }) => {
       context: {
         skip: postsPerPage * index + postsOnIndex,
         limit: postsPerPage,
-        totalPages,
         pageIndex,
       },
     });

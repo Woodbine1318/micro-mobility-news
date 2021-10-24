@@ -8,6 +8,7 @@ import SEO from '../components/SEO';
 import { graphql, Link } from 'gatsby';
 import BlogPostCard from '../components/BlogPostCard';
 import Stack from '../components/Stack';
+import Pagination from '../components/Pagination.';
 
 const IndexPage = ({ data: { allContentfulBlogPost } }) => {
   const [featured, ...latest] = allContentfulBlogPost?.edges.map(({ node: post }) => post);
@@ -67,6 +68,8 @@ const IndexPage = ({ data: { allContentfulBlogPost } }) => {
           ))}
         </section>
       </div>
+
+      <Pagination currentPageIndex={1} />
     </Layout>
   );
 };
