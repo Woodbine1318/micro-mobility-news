@@ -35,9 +35,7 @@ module.exports = {
         icon: `src/assets/favicon.png`, // This path is relative to the root of the site.
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    `gatsby-plugin-offline`,
     {
       resolve: `gatsby-source-contentful`,
       options: {
@@ -62,6 +60,81 @@ module.exports = {
         gfm: true,
         // Plugins configs
         plugins: [],
+      },
+    },
+    'gatsby-plugin-sitemap',
+    {
+      resolve: `gatsby-plugin-feed`,
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                title
+                siteUrl
+                site_url: siteUrl
+              }
+            }
+          }
+        `,
+        feeds: [
+          {
+            serialize: ({ query: { site, allContentfulBlogPost } }) => {
+              return allContentfulBlogPost.edges.map(({ node: post }) => {
+                return {
+                  title: post.title,
+                  date: post.publishedDate,
+                  description: post.content ? post.content.childMarkdownRemark.excerpt : '',
+                  url: `${site.siteMetadata.siteUrl}/news/${post.slug}`,
+                  guid: `${site.siteMetadata.siteUrl}/news/${post.slug}`,
+                  enclosure: post.cover
+                    ? {
+                        url: post.cover.file.url,
+                        size: post.cover.file.details.size,
+                        type: post.cover.file.contentType,
+                      }
+                    : null,
+                  custom_elements: [{ 'content:encoded': post.content ? post.content.childMarkdownRemark.html : '' }],
+                };
+              });
+            },
+            query: `
+              {
+                allContentfulBlogPost(sort: {fields: createdAt, order: DESC}) {
+                  edges {
+                    node {
+                      slug
+                      title
+                      publishedDate: createdAt
+                      categories {
+                        id
+                        slug
+                        name
+                      }
+                      content {
+                        childMarkdownRemark {
+                          html
+                          excerpt(format: PLAIN, pruneLength: 260, truncate: true)
+                        }
+                      }
+                      cover {
+                        file {
+                          url
+                          details {
+                            size
+                          }
+                          contentType
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            `,
+            output: '/rss.xml',
+            title: 'Micro Mobility News',
+          },
+        ],
       },
     },
   ],
