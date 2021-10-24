@@ -1,5 +1,5 @@
 import React from 'react';
-import { GatsbyImage, StaticImage } from 'gatsby-plugin-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import Logo from '../assets/images/Logo.svg';
 import Bike from '../assets/images/Bike.svg';
 import Scooter from '../assets/images/Scooter.svg';
@@ -69,7 +69,9 @@ const IndexPage = ({ data: { allContentfulBlogPost } }) => {
         </section>
       </div>
 
-      <Pagination currentPageIndex={1} />
+      <div className="mb-12">
+        <Pagination currentPageIndex={1} />
+      </div>
     </Layout>
   );
 };
