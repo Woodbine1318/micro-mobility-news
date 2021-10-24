@@ -1,3 +1,4 @@
+import React from 'react';
 import './src/styles/tailwind.css';
 import '@fontsource/barlow/400.css';
 import '@fontsource/barlow/800.css';
