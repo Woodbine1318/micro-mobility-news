@@ -9,6 +9,15 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+
+      allContentfulSitePage {
+        edges {
+          node {
+            id
+            slug
+          }
+        }
+      }
     }
   `);
 
@@ -43,6 +52,18 @@ exports.createPages = async ({ graphql, actions }) => {
         skip: postsPerPage * index + postsOnIndex,
         limit: postsPerPage,
         pageIndex,
+      },
+    });
+  });
+
+  const pages = data?.allContentfulSitePage.edges;
+
+  pages.forEach(({ node: page }) => {
+    actions.createPage({
+      path: `/${page.slug}`,
+      component: require.resolve('./src/templates/SitePage.jsx'),
+      context: {
+        slug: page.slug,
       },
     });
   });
