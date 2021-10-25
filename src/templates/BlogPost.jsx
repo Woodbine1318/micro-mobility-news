@@ -29,10 +29,15 @@ const BlogPostTemplate = ({ data: { contentfulBlogPost: post } }) => {
       </section>
 
       <section className="container grid grid-cols-1 px-8 mb-24 md:px-24 md:gap-x-24 md:grid-cols-4">
-        <div className="mb-12">
-          <p className="w-72 text-center border-4 border-black rounded-xl font-black uppercase py-3 md:w-full">
-            {post.category.name}
-          </p>
+        <div className="flex flex-row flex-wrap items-start height-min mb-12 gap-2">
+          {post.categories.map((category) => (
+            <span
+              className="inline w-72 text-center border-4 border-black rounded-xl font-black uppercase py-3 px-2 mr-2 md:w-full"
+              key={category.slug}
+            >
+              {category.name}
+            </span>
+          ))}
         </div>
 
         <div
@@ -50,7 +55,7 @@ export const query = graphql`
       id
       slug
       title
-      category {
+      categories {
         id
         slug
         name
