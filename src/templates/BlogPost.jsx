@@ -1,20 +1,16 @@
 import React from 'react';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
-import Badge from '../assets/images/Badge.svg';
 import { GatsbyImage } from 'gatsby-plugin-image';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
+import HeaderAlternate from '../components/HeaderAlternate';
 
 const BlogPostTemplate = ({ data: { contentfulBlogPost: post } }) => {
   return (
     <Layout>
       <SEO />
 
-      <header className="container flex flex-row flex-nowrap justify-between items-center py-8 px-7 mb-24">
-        <Link to="/">
-          <Badge className="w-36" />
-        </Link>
-      </header>
+      <HeaderAlternate />
 
       <section className="container relative px-8 mb-12 md:mb-24 md:px-24">
         <GatsbyImage

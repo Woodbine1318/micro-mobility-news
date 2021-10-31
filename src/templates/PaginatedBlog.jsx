@@ -1,21 +1,17 @@
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 import React from 'react';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
-import Badge from '../assets/images/Badge.svg';
 import BlogPostCard from '../components/BlogPostCard';
 import Pagination from '../components/Pagination.';
+import HeaderAlternate from '../components/HeaderAlternate';
 
 const PaginatedBlog = ({ data: { allContentfulBlogPost: posts }, pageContext: { pageIndex } }) => {
   return (
     <Layout>
       <SEO />
 
-      <header className="container flex flex-row flex-nowrap justify-between items-center py-8 px-7 mb-24">
-        <Link to="/">
-          <Badge className="w-36" />
-        </Link>
-      </header>
+      <HeaderAlternate />
 
       <section className="container relative grid grid-cols-1 gap-12 px-8 mb-12 md:grid-cols-2 md:items-start md:mb-24 md:px-24">
         {posts.edges.map(({ node: post }, index) => (
