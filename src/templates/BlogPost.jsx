@@ -5,10 +5,19 @@ import { GatsbyImage } from 'gatsby-plugin-image';
 import { graphql } from 'gatsby';
 import HeaderAlternate from '../components/HeaderAlternate';
 
-const BlogPostTemplate = ({ data: { contentfulBlogPost: post } }) => {
+const BlogPostTemplate = ({ location, data: { contentfulBlogPost: post } }) => {
   return (
     <Layout>
-      <SEO />
+      <SEO
+        title={post.title}
+        description={post.content?.childMarkdownRemark.excerpt}
+        og={{
+          type: 'article',
+          published_time: post.createdAt,
+          tags: [post.categories.map((c) => c.name)],
+        }}
+        canonicalPath={location.pathname}
+      />
 
       <HeaderAlternate />
 
@@ -60,9 +69,11 @@ export const query = graphql`
         gatsbyImageData(quality: 100, layout: CONSTRAINED, width: 600, placeholder: DOMINANT_COLOR)
         title
       }
+      createdAt
       content {
         childMarkdownRemark {
           html
+          excerpt(format: PLAIN, pruneLength: 260, truncate: true)
         }
       }
     }

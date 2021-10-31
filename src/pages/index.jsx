@@ -11,12 +11,12 @@ import Stack from '../components/Stack';
 import Pagination from '../components/Pagination.';
 import CategoryNav from '../components/CategoryNav';
 
-const IndexPage = ({ data: { allContentfulBlogPost } }) => {
+const IndexPage = ({ location, data: { allContentfulBlogPost } }) => {
   const [featured, ...latest] = allContentfulBlogPost?.edges.map(({ node: post }) => post);
 
   return (
     <Layout>
-      <SEO title="Home" />
+      <SEO canonicalPath={location.pathname} />
 
       <header className="container flex flex-row flex-nowrap justify-around items-center py-8 px-7 max-w-screen-xl mx-auto mb-14 md:justify-between">
         <Bike className="w-40 h-w-40 hidden md:block md:w-48 md:h-48" />

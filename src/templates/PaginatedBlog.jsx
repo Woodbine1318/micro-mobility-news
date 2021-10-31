@@ -6,10 +6,10 @@ import BlogPostCard from '../components/BlogPostCard';
 import Pagination from '../components/Pagination.';
 import HeaderAlternate from '../components/HeaderAlternate';
 
-const PaginatedBlog = ({ data: { allContentfulBlogPost: posts }, pageContext: { pageIndex } }) => {
+const PaginatedBlog = ({ location, data: { allContentfulBlogPost: posts }, pageContext: { pageIndex } }) => {
   return (
     <Layout>
-      <SEO />
+      <SEO canonicalPath={location.pathname} />
 
       <HeaderAlternate />
 

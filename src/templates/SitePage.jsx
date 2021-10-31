@@ -5,10 +5,10 @@ import SEO from '../components/SEO';
 import Stack from '../components/Stack';
 import HeaderAlternate from '../components/HeaderAlternate';
 
-const SitePage = ({ data: { contentfulSitePage: page } }) => {
+const SitePage = ({ location, data: { contentfulSitePage: page } }) => {
   return (
     <Layout>
-      <SEO />
+      <SEO title={page.title} canonicalPath={location.pathname} />
 
       <HeaderAlternate />
 

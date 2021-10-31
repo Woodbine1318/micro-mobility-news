@@ -8,12 +8,13 @@ import CategoryPagination from '../components/CategoryPagination';
 import HeaderAlternate from '../components/HeaderAlternate';
 
 const PaginatedCategoryPage = ({
+  location,
   pageContext: { pageIndex, totalPages },
   data: { contentfulCategory: category, allContentfulBlogPost: posts },
 }) => {
   return (
     <Layout>
-      <SEO />
+      <SEO title={category.name} canonicalPath={location.pathname} />
 
       <HeaderAlternate />
 
