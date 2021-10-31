@@ -9,6 +9,7 @@ import { graphql, Link } from 'gatsby';
 import BlogPostCard from '../components/BlogPostCard';
 import Stack from '../components/Stack';
 import Pagination from '../components/Pagination.';
+import CategoryNav from '../components/CategoryNav';
 
 const IndexPage = ({ data: { allContentfulBlogPost } }) => {
   const [featured, ...latest] = allContentfulBlogPost?.edges.map(({ node: post }) => post);
@@ -17,7 +18,7 @@ const IndexPage = ({ data: { allContentfulBlogPost } }) => {
     <Layout>
       <SEO title="Home" />
 
-      <header className="container flex flex-row flex-nowrap justify-around items-center py-8 px-7 max-w-screen-xl mx-auto mb-24 md:justify-between">
+      <header className="container flex flex-row flex-nowrap justify-around items-center py-8 px-7 max-w-screen-xl mx-auto mb-14 md:justify-between">
         <Bike className="w-40 h-w-40 hidden md:block md:w-48 md:h-48" />
         <Scooter className="w-32 h-w-32 md:w-40 md:h-40" />
 
@@ -28,6 +29,8 @@ const IndexPage = ({ data: { allContentfulBlogPost } }) => {
         <Bike className="w-40 h-w-40 md:w-48 md:h-48" />
         <Scooter className="w-32 h-w-32 hidden md:block md:w-40 md:h-40" />
       </header>
+
+      <CategoryNav className="mb-24" />
 
       <div className="container px-7 grid grid-cols-1 items-start mb-24 md:grid-cols-2 md:px-11 md:gap-x-14">
         <Stack className="mb-24 md:sticky md:top-11 md:left-0 md:mb-8">

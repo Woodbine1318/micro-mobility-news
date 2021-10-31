@@ -40,6 +40,7 @@ module.exports = {
       cursor: ['disabled'],
       opacity: ['disabled'],
       spacing: ['last'],
+      borderWidth: ['hover'],
     },
   },
   plugins: [],
