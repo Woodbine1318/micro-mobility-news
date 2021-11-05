@@ -36,11 +36,13 @@ const IndexPage = ({ location, data: { allContentfulBlogPost } }) => {
         <Stack className="mb-24 md:sticky md:top-11 md:left-0 md:mb-8">
           <article className="relative bg-white max-w-4xl p-14 border-8 border-black rounded-3xl">
             <Link to={`/news/${featured.slug}`}>
-              <GatsbyImage
-                image={featured.cover.gatsbyImageData}
-                alt={featured.cover.title || ''}
-                className="rounded-3xl mb-7 w-full max-h-120"
-              />
+              {!featured.cover?.gatsbyImageData ? null : (
+                <GatsbyImage
+                  image={featured.cover.gatsbyImageData}
+                  alt={featured.cover.title || ''}
+                  className="rounded-3xl mb-7 w-full max-h-120"
+                />
+              )}
               <h2 className="font-extrabold text-lg mb-16">{featured.title}</h2>
             </Link>
 
