@@ -18,9 +18,10 @@ const BlogPostCard = ({ post, isEven, extended = false }) => {
           </span>
         ))}
 
-        <h2 className="font-extrabold text-lg leading-tight mb-8">
+        <h2 className="font-extrabold text-lg leading-tight mb-2">
           <Link to={`/news/${post.slug}`}>{post.title}</Link>
         </h2>
+        <h2 className={`text-sm mb-8`}>{post.createdAt}</h2>
 
         <p className="text-sm">{post.content.childMarkdownRemark.excerpt}</p>
       </div>

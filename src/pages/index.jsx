@@ -43,9 +43,9 @@ const IndexPage = ({ location, data: { allContentfulBlogPost } }) => {
                   className="rounded-3xl mb-7 w-full max-h-120"
                 />
               )}
-              <h2 className="font-extrabold text-lg mb-16">{featured.title}</h2>
+              <h2 className="font-extrabold text-lg mb-2">{featured.title}</h2>
             </Link>
-
+            <h2 className={`text-sm mb-16`}>{featured.createdAt}</h2>
             <p className="mb-8">{featured.content.childMarkdownRemark.excerpt}</p>
 
             <div className="flex flex-row flex-wrap">
@@ -98,6 +98,7 @@ export const query = graphql`
             gatsbyImageData(quality: 100, layout: CONSTRAINED, width: 600, placeholder: DOMINANT_COLOR)
             title
           }
+          createdAt(formatString: "MMMM D, yyyy")
           content {
             childMarkdownRemark {
               excerpt(format: PLAIN, pruneLength: 260, truncate: true)

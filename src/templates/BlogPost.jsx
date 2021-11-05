@@ -27,6 +27,7 @@ const BlogPostTemplate = ({ location, data: { contentfulBlogPost: post } }) => {
 
       <section className="container grid grid-cols-1 px-8 mb-24 md:px-24 md:gap-x-24 md:grid-cols-4">
         <div className="flex flex-row flex-wrap items-start h-min mb-12 gap-2">
+          <h2 className={`text-lg mb-6`}>{post.createdAt}</h2>
           {post.categories.map((category) => (
             <span
               className="inline w-72 text-center border-4 border-black rounded-xl font-black uppercase py-3 px-2 mr-2 md:w-full"
@@ -61,7 +62,7 @@ export const query = graphql`
         gatsbyImageData(quality: 100, layout: CONSTRAINED, width: 600, placeholder: DOMINANT_COLOR)
         title
       }
-      createdAt
+      createdAt(formatString: "MMMM D, yyyy")
       content {
         childMarkdownRemark {
           html
