@@ -7,6 +7,18 @@ exports.createPages = async ({ graphql, actions }) => {
             id
             slug
           }
+          previous: next {
+            # To counter the DESC display order
+            id
+            slug
+            title
+          }
+          next: previous {
+            # To counter the DESC display order
+            id
+            slug
+            title
+          }
         }
       }
 
@@ -46,10 +58,7 @@ const createPostPages = async (posts, createPage) => {
   const totalPosts = posts.length - postsOnIndex;
   const totalPages = Math.ceil(totalPosts / postsPerPage);
 
-  posts.forEach(({ node: post }, index) => {
-    const next = posts[index + 1];
-    const previous = posts[index - 1];
-
+  posts.forEach(({ node: post, next, previous }, index) => {
     createPage({
       path: `/news/${post.slug}`,
       component: require.resolve('./src/templates/BlogPost.jsx'),
