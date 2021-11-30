@@ -4,8 +4,8 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    title: `Micro Mobility News`,
-    description: `Micro Mobility News`,
+    title: `Micromobility News`,
+    description: `Micromobility News`,
     author: `@micromobilitynews`,
     siteUrl: `https://micromobilitynews.co.uk/`,
   },
