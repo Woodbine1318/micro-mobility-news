@@ -24,7 +24,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Micro Mobility News`,
+        name: `Micromobility News`,
         short_name: `MMN`,
         start_url: `/`,
         background_color: `#663399`,
@@ -132,7 +132,7 @@ module.exports = {
               }
             `,
             output: '/rss.xml',
-            title: 'Micro Mobility News',
+            title: 'Micromobility News',
           },
         ],
       },
