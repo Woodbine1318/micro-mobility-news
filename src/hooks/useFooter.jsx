@@ -6,6 +6,7 @@ export const useFooter = () => {
       contentfulNavigationBar(slug: { eq: "footer" }) {
         slug
         links {
+          externalUrl
           text
           page {
             slug
