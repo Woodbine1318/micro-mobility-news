@@ -3,9 +3,9 @@ module.exports = {
   darkMode: false,
   theme: {
     fontFamily: {
-      body: 'Barlow, sans-serif',
-      heading: 'Barlow, sans-serif',
-      display: '"Barlow Condensed", sans-serif',
+      body: 'Roboto, sans-serif',
+      heading: 'Roboto, sans-serif',
+      display: '"Roboto Condensed", sans-serif',
     },
     fontSize: {
       xs: '1rem',
