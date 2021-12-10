@@ -29,6 +29,22 @@
   @apply w-full mb-8;
 }
 
+.rich-text table{
+  @apply w-full
+}
+
+.rich-text table thead{
+  @apply border border-gray-200 bg-tertiary;
+}
+
+.rich-text tr{
+  @apply text-center table-fixed mb-3 pb-1;
+}
+
+.rich-text td{
+  @apply text-center border border-gray-200 pb-1 mb-2;
+}
+
 .stack {
   @apply relative;
 }

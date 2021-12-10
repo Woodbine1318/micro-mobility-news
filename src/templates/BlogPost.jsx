@@ -1,5 +1,6 @@
 import React from 'react';
 import Layout from '../components/Layout';
+import Markdown from 'markdown-to-jsx';
 import SEO from '../components/SEO';
 import { graphql, Link } from 'gatsby';
 import HeaderAlternate from '../components/HeaderAlternate';
@@ -35,11 +36,9 @@ const BlogPostTemplate = ({ location, data: { contentfulBlogPost: post, next, pr
             </span>
           ))}
         </div>
-
-        <div
-          dangerouslySetInnerHTML={{ __html: post.content.childMarkdownRemark.html }}
-          className="rich-text md:col-span-3"
-        />
+        <div className="rich-text md:col-span-3">
+          <Markdown>{post.content.content}</Markdown>
+        </div>
       </section>
 
       <nav className="container flex flex-col items-between py-16 px-8 md:flex-row md:justify-between md:px-24 md:items-start">
@@ -86,6 +85,7 @@ export const query = graphql`
       }
       createdAt(formatString: "MMMM D, yyyy")
       content {
+        content
         childMarkdownRemark {
           html
           excerpt(format: PLAIN, pruneLength: 260, truncate: true)

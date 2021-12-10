@@ -21,6 +21,7 @@ module.exports = {
       colors: {
         primary: '#0085FF',
         secondary: '#7421FC',
+        tertiary: '#E9ECEF',
       },
       height: {
         min: 'min-content',
