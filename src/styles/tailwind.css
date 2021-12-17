@@ -45,6 +45,10 @@
   @apply text-center border border-gray-200 pb-1 mb-2;
 }
 
+.rich-text a{
+  @apply text-secondary underline 
+}
+
 .stack {
   @apply relative;
 }
