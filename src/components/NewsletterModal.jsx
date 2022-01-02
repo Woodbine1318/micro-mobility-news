@@ -31,9 +31,7 @@ const NewsletterModal = ({ isOpen, onDismiss, setHasSubscribed }) => {
       className="fixed left-1/2 bottom-0 w-full max-w-screen-sm transform -translate-x-1/2 md:bottom-4"
     >
       <DialogContent className="bg-white py-8 px-8 border-8 border-secondary mx-auto outline-none shadow-md">
-        <h1 className="text-lg font-display mb-4">Join the Micromobility Newsletter!</h1>
-
-        <p className="mb-12 text-sm">Sign up to receive news that matter in the world of micromobility.</p>
+        <h1 className="text-lg font-display mb-4">Sign up to the micromobility news U.K. newsletter</h1>
 
         <button
           aria-label="Close"
