@@ -8,7 +8,7 @@ import { useState } from 'react';
 
 const Footer = () => {
   const { links } = useFooter();
-  const [isModalOpen, setIsModalOpen] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [hasSubscribed, setHasSubscribed] = useState(() => {
     if (typeof window === 'undefined') return false;
 
