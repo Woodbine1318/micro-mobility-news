@@ -5,8 +5,17 @@ import SEO from '../components/SEO';
 import { graphql, Link } from 'gatsby';
 import HeaderAlternate from '../components/HeaderAlternate';
 import ImagePost from '../components/ImagePost';
+import { useSiteMetadata } from '../hooks/useSiteMetadata';
+import { Disqus } from 'gatsby-plugin-disqus';
 
 const BlogPostTemplate = ({ location, data: { contentfulBlogPost: post, next, previous } }) => {
+  const { link } = useSiteMetadata();
+  let disqusConfig = {
+    url: `${link}${location.pathname}`,
+    identifier: post.id,
+    title: post.title,
+  };
+
   return (
     <Layout>
       <SEO
@@ -41,6 +50,10 @@ const BlogPostTemplate = ({ location, data: { contentfulBlogPost: post, next, pr
         </div>
       </section>
 
+      <section className="container">
+        <Disqus config={disqusConfig} />
+      </section>
+
       <nav className="container flex flex-col items-between py-16 px-8 md:flex-row md:justify-between md:px-24 md:items-start">
         <div className="max-w-lg mb-8 md:mb-0">
           {next && (
@@ -52,7 +65,6 @@ const BlogPostTemplate = ({ location, data: { contentfulBlogPost: post, next, pr
             </>
           )}
         </div>
-
         <div className="self-end text-right max-w-lg">
           {previous && (
             <>
@@ -79,6 +91,7 @@ export const query = graphql`
         slug
         name
       }
+
       cover {
         gatsbyImageData(quality: 100, layout: CONSTRAINED, width: 600, placeholder: DOMINANT_COLOR)
         title

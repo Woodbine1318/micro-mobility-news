@@ -160,5 +160,11 @@ module.exports = {
         endpoint: process.env.MAILCHIMP_ENDPOINT,
       },
     },
+    {
+      resolve: `gatsby-plugin-disqus`,
+      options: {
+        shortname: `micromobility`,
+      },
+    },
   ],
 };
