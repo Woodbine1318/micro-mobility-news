@@ -7,10 +7,14 @@ import HeaderAlternate from '../components/HeaderAlternate';
 import ImagePost from '../components/ImagePost';
 import { useSiteMetadata } from '../hooks/useSiteMetadata';
 import { Disqus } from 'gatsby-plugin-disqus';
+import { usePostsByCategory } from '../hooks/usePostsByCategory';
 
 const BlogPostTemplate = ({ location, data: { contentfulBlogPost: post, next, previous } }) => {
   const { link } = useSiteMetadata();
-  let disqusConfig = {
+  const categoryPosts = usePostsByCategory(post.categories[0].slug);
+  const relatedPosts = categoryPosts.filter((p) => p.slug !== post.slug).slice(0, 3);
+
+  const disqusConfig = {
     url: `${link}${location.pathname}`,
     identifier: post.id,
     title: post.title,
@@ -53,6 +57,19 @@ const BlogPostTemplate = ({ location, data: { contentfulBlogPost: post, next, pr
       <section className="container">
         <Disqus config={disqusConfig} />
       </section>
+
+      <nav className="container py-16 px-8">
+        <h3 className="font-display text-lg font-medium mb-8 text-center">You may also like</h3>
+
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-3 text-center">
+          {relatedPosts.map((p) => (
+            <a href={`/news/${p.slug}`} key={p.id}>
+              <span className="block text-primary text-sm">{post.categories[0].name}</span>
+              {p.title}
+            </a>
+          ))}
+        </div>
+      </nav>
 
       <nav className="container flex flex-col items-between py-16 px-8 md:flex-row md:justify-between md:px-24 md:items-start">
         <div className="max-w-lg mb-8 md:mb-0">
